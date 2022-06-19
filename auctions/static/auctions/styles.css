@@ -1,0 +1,35 @@
+body {
+    padding: 0;
+    margin: 60px 10px 10px;
+}
+
+.navbar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.aucDisplay {
+    margin: 15px;
+    padding: 10px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
+.comment {
+    margin: 15px;
+    padding: 10px;
+    background-color: lightsteelblue;
+    border-radius: 20px;
+}
+
+.btn {
+    width: 200px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.inputAuc{
+    width: 300px;
+    padding: 3px;
+}

@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Auctions{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+</head>
+
+
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'index' %}"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'index' %}">All Listings</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'newAuction' %}">Add Listing</a></li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}"><span
+                            class="glyphicon glyphicon-user"></span> {{ request.user.username }}</a></li>
+                    <li><a href="{% url 'watchlist' %}"><span class="glyphicon glyphicon-star"></span> Watchlist</a>
+                    </li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+</header>
+
+
+<body>
+
+{% block body %}
+
+{% endblock %}
+
+</body>
+
+
+</html>

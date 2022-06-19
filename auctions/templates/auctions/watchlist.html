@@ -1,0 +1,16 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <h2>My Watchlist</h2>
+    <hr>
+    {% for item in watchlist %}
+        <div class="aucDisplay">
+            <h4><strong><a href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></strong>
+                by {{ item.user.username }}</h4>
+            <p>{{ item.description }}</p>
+            <h5>Current Bid at <strong>{{ item.currentBidValue }}</strong></h5>
+            <h5>Created at {{ item.datetime }}</h5>
+        </div>
+    {% endfor %}
+
+{% endblock %}

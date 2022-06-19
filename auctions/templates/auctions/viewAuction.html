@@ -1,0 +1,55 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2><strong> {{ auction.title }}</strong> by {{ auction.user.username }}</h2>
+    <hr>
+
+    <h4>{{ auction.description }}</h4>
+
+    <hr>
+    <h4>
+        <a class="btn btn-primary" href="{% url 'watchlistAdd' auction.pk %}"><span class="glyphicon glyphicon-star"></span> Add To
+            Watchlist</a>
+    </h4>
+    <hr>
+
+
+    {#  CURRENET BID INFO #}
+    <h3>Bid at <strong> {{ auction.currentBidValue }} </strong>from {{ winner }} </h3>
+    {% if  message %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+    {#  =================================== #}
+
+    {#  BIDING #}
+    <form method="post" action="{% url 'viewAuction' auction.pk %}">
+        {% csrf_token %}
+        <input type="number"  class="inputAuc" name="newBid">
+        <input type="submit" class="btn btn-primary" value="Save Bid">
+    </form>
+    {#  =================================== #}
+
+    <hr>
+
+    {#  COMMENTING #}
+    <form method="post" action="{% url 'commentAdd' auction.pk %}">
+        {% csrf_token %}
+        <input type="text"  class="inputAuc" name="content">
+        <input type="submit" class="btn btn-primary" value="Save Comment">
+    </form>
+
+
+    <h2>Comments:</h2>
+    {% for comment in comments %}
+
+        <div class="comment">
+        <h4>From {{ comment.user.username }} on {{ comment.datetime }}</h4>
+        <h5>{{ comment.content }}</h5>
+        </div>
+
+    {% endfor %}
+    {#  =================================== #}
+
+
+{% endblock %}
