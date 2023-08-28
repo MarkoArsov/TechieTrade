@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1 class="home-title">Discover <span class="orange">techietrade</span></h1>
+    <h1 class="home-subtitle">Where Preloved Gadgets Find New Homes</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control search-form" type="text" name="title"
+                   placeholder="Search techitrade..">
+        </div>
+    </form>
+    <div class="home-action-button">
+        <a class="btn btn-primary home-button" href="{% url 'index' %}">Start Buying</a>
+        <p>or <a href="{% url 'newAuction' %}" class="orange">start selling</a> your own items</p>
+    </div>
+
+
+
+    <div class="container home-auctions">
+        <h2 class="subtitle">Recommendations</h2>
+        <div class="row home-row">
+            {% for item in auctions %}
+
+                <div class="card auction-card col-sm-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="card-title-link"
+                                                      href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></h5>
+                            <p class="card-text"><small class="text-body-secondary">{{ item.description | truncatechars:100}}</small></p>
+                        </div>
+                    <img src="{{ item.image }}"
+                         class="card-img-bottom"
+                         alt="...">
+                </div>
+
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

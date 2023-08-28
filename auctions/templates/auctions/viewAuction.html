@@ -2,54 +2,46 @@
 
 {% block body %}
 
-    <h2><strong> {{ auction.title }}</strong> by {{ auction.user.username }}</h2>
-    <hr>
+    <div class="container details-container">
+        <div class="row details-row">
+            <img class="col-sm-6 details-img" src="{{ auction.image }}">
+            <div class="col-sm-6 details">
+                <h2 class="details-title">{{ auction.title }}</h2>
+                <p class="black">{{ auction.description }}</p>
 
-    <h4>{{ auction.description }}</h4>
-
-    <hr>
-    <h4>
-        <a class="btn btn-primary" href="{% url 'watchlistAdd' auction.pk %}"><span class="glyphicon glyphicon-star"></span> Add To
-            Watchlist</a>
-    </h4>
-    <hr>
-
-
-    {#  CURRENET BID INFO #}
-    <h3>Bid at <strong> {{ auction.currentBidValue }} </strong>from {{ winner }} </h3>
-    {% if  message %}
-        <h3>{{ message }}</h3>
-    {% endif %}
-    {#  =================================== #}
-
-    {#  BIDING #}
-    <form method="post" action="{% url 'viewAuction' auction.pk %}">
-        {% csrf_token %}
-        <input type="number"  class="inputAuc" name="newBid">
-        <input type="submit" class="btn btn-primary" value="Save Bid">
-    </form>
-    {#  =================================== #}
-
-    <hr>
-
-    {#  COMMENTING #}
-    <form method="post" action="{% url 'commentAdd' auction.pk %}">
-        {% csrf_token %}
-        <input type="text"  class="inputAuc" name="content">
-        <input type="submit" class="btn btn-primary" value="Save Comment">
-    </form>
-
-
-    <h2>Comments:</h2>
-    {% for comment in comments %}
-
-        <div class="comment">
-        <h4>From {{ comment.user.username }} on {{ comment.datetime }}</h4>
-        <h5>{{ comment.content }}</h5>
+                <div class="bid-info">
+                    <p class="black">Current bid at <span class="orange"> <strong>{{ auction.currentBidValue }}</strong> </span>
+                        ({{ winner }})
+                    </p>
+                    <form method="post" action="{% url 'viewAuction' auction.pk %}">
+                        {% csrf_token %}
+                        <input type="number" class="form-control bid-input" name="newBid">
+                        <input type="submit" class="btn btn-primary bid-button" value="Save Bid">
+                        <a href="{% url 'watchlistAdd' auction.pk %}" class="watchlist-icon"><i
+                                class="bi bi-heart-fill icon"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row comment-input-row">
+            <form method="post" action="{% url 'commentAdd' auction.pk %}">
+                {% csrf_token %}
+                <input type="text" class="form-control comment-input" name="content" placeholder="Leave a comment...">
+                <input type="submit" class="btn btn-primary comment-button" value="Comment">
+            </form>
         </div>
 
-    {% endfor %}
-    {#  =================================== #}
+        <div class="row">
+            {% for comment in comments %}
+                <div class="col-sm-6">
+                    <div class="comment">
+                        <h2 class="white">{{ comment.user.username }}</h2>
+                        <p>{{ comment.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
+    </div>
 
 {% endblock %}

@@ -2,17 +2,31 @@
 
 {% block body %}
 
-     <form action="{% url 'newAuction' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="title" placeholder="Title">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="{% url 'newAuction' %}" method="post" class="login-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="white">Title</label>
+                        <input autofocus class="form-control login-input" type="text" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Description</label>
+                        <input class="form-control login-input" type="text" name="desc">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Starting bid</label>
+                        <input class="form-control login-input" type="number" name="start">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Image</label>
+                        <input class="form-control login-input" type="text" name="img">
+                    </div>
+                    <input class="btn btn-primary submit-form-button" type="submit" value="Save">
+                </form>
+            </div>
+            <img class="col-sm-6 lap-top-img" src="../../static/images/lap-top.png">
         </div>
-        <div class="form-group">
-            <input class="form-control" type="text" name="desc" placeholder="Description">
-        </div>
-          <div class="form-group">
-            <input class="form-control" type="number" name="start" placeholder="Starting Bid">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Save">
-    </form>
+    </div>
 {% endblock %}

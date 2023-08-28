@@ -1,30 +1,38 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="{% url 'register' %}" method="post" class="login-form">
+                    {% if message %}
+                        <div>{{ message }}</div>
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="white">Username</label>
+                        <input class="form-control login-input" autofocus type="text" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">E-Mail</label>
+                        <input class="form-control login-input" type="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Password</label>
+                        <input class="form-control login-input" type="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Confirm Password</label>
+                        <input class="form-control login-input" type="password" name="confirmation">
+                    </div>
+                    <input class="btn btn-primary submit-form-button" type="submit" value="Register">
+                </form>
 
-    <h2>Register</h2>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                <p class="white"> Already have an account? <a href="{% url 'login' %}"><span
+                        class="orange">Log In here</span></a>
+                </p>
+            </div>
+            <img class="col-sm-6 lap-top-img" src="../../static/images/lap-top.png">
         </div>
-        <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email Address">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Register">
-    </form>
-
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
-
+    </div>
 {% endblock %}

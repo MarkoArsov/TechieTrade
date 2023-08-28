@@ -1,24 +1,27 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
+    <div class="container">
+        <div class="row form-row">
+            <div class="col-sm-6">
+                <form action="{% url 'login' %}" method="post" class="login-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="white">Username</label>
+                        <input autofocus class="form-control login-input" type="text" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label class="white">Password</label>
+                        <input class="form-control login-input" type="password" name="password">
+                    </div>
+                    <input class="btn btn-primary submit-form-button" type="submit" value="Login">
+                </form>
 
-    <h2>Login</h2>
+                <p>Don't have an account? <a href="{% url 'register' %}"> <span
+                        class="orange"> Register here </span></a></p>
+            </div>
+            <img class="col-sm-6 lap-top-img" src="../../static/images/lap-top.png">
 
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <input autofocus class="form-control" type="text" name="username" placeholder="Username">
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Login">
-    </form>
-
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
-
+    </div>
 {% endblock %}

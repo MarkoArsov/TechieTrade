@@ -1,18 +1,28 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
-    <hr>
-    {% for item in auctions %}
-
-        <div class="aucDisplay">
-            <h4><strong><a href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></strong>
-                by {{ item.user.username }}</h4>
-            <p>{{ item.description }}</p>
-            <h5>Current Bid at <strong>{{ item.currentBidValue }}</strong></h5>
-            <h5>Created at {{ item.datetime }}</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control index-search-form" type="text" name="title"
+                   placeholder="Search techitrade..">
         </div>
+    </form>
 
-
-    {% endfor %}
+    <div class="container home-auctions">
+        <div class="row home-row">
+            {% for item in auctions %}
+                <div class="card auction-card col-sm-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><a class="card-title-link"
+                                                  href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></h5>
+                        <p class="card-text"><small class="text-body-secondary">{{ item.description | truncatechars:100 }}</small></p>
+                    </div>
+                    <img src="{{ item.image }}"
+                         class="card-img-bottom"
+                         alt="...">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,16 +1,33 @@
 {% extends 'auctions/layout.html' %}
 
 {% block body %}
-    <h2>Lost Auctions</h2>
-    <hr>
-    {% for item in losses %}
-        <div class="aucDisplay">
-            <h4><strong><a href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></strong>
-                by {{ item.user.username }}</h4>
-            <p>{{ item.description }}</p>
-            <h5>Current Bid at <strong>{{ item.currentBidValue }}</strong></h5>
-            <h5>Created at {{ item.datetime }}</h5>
+    <div class="container home-auctions">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'profile' %}">My Auctions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'winsView' %}">Won Auctions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active black" href="{% url 'lossesView' %}">Lost Auctions</a>
+            </li>
+        </ul>
+        <br>
+        <div class="row home-row">
+            {% for item in losses %}
+                <div class="card auction-card col-sm-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><a class="card-title-link"
+                                                  href="{% url 'viewAuction' item.pk %}"> {{ item.title }} </a></h5>
+                        <p class="card-text"><small
+                                class="text-body-secondary">{{ item.description | truncatechars:100 }}</small></p>
+                    </div>
+                    <img src="{{ item.image }}"
+                         class="card-img-bottom"
+                         alt="...">
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-
+    </div>
 {% endblock %}

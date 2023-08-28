@@ -7,6 +7,12 @@ from django.urls import reverse
 from .models import User, Listing, Bid, Comment
 
 
+def home(request):
+    return render(request, "auctions/home.html", {
+        "auctions": Listing.objects.filter(isOpen=True).order_by("-datetime").all()
+    })
+
+
 def index(request):
     return render(request, "auctions/index.html", {
         "auctions": Listing.objects.filter(isOpen=True).order_by("-datetime").all()
@@ -30,7 +36,9 @@ def login_view(request):
                 "message": "Invalid username and/or password."
             })
     else:
-        return render(request, "auctions/login.html")
+        return render(request, "auctions/login.html", {
+            "big_footer": True
+        })
 
 
 def logout_view(request):
@@ -62,7 +70,9 @@ def register(request):
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "auctions/register.html")
+        return render(request, "auctions/register.html", {
+            "big_footer": True
+        })
 
 
 def profile(request):
@@ -88,12 +98,15 @@ def newAuction(request):
         title = request.POST["title"]
         desc = request.POST["desc"]
         startBid = request.POST["start"]
+        img = request.POST["img"]
         currentUserId = request.user.id
         newListing = Listing(title=title, description=desc, currentBidValue=startBid, user_id=currentUserId,
-                             isOpen=True, winner_id=currentUserId)
+                             isOpen=True, winner_id=currentUserId, image=img)
         newListing.save()
         return index(request)
-    return render(request, "auctions/newAuction.html", {})
+    return render(request, "auctions/newAuction.html", {
+        "big_footer": True
+    })
 
 
 def viewAuction(request, auctionId):

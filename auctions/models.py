@@ -12,7 +12,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
     currentBidValue = models.DecimalField(max_digits=10, decimal_places=2)
-    imageURL = models.CharField(max_length=256)
+    image = models.CharField(max_length=256)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
     watchListUsers = models.ManyToManyField(User, related_name="watchlist")

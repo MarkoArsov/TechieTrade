@@ -1,35 +1,312 @@
+/* ======================== LAYOUT ======================== */
+
 body {
     padding: 0;
     margin: 60px 10px 10px;
+    background-color: #1D1D1D;
+    font-family: 'Baloo Tamma 2', serif;
 }
 
-.navbar {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
+p {
+    color: white;
 }
 
-.aucDisplay {
-    margin: 15px;
-    padding: 10px;
-    background-color: antiquewhite;
-    border-radius: 20px;
+a {
+    text-decoration: none;
 }
 
-.comment {
-    margin: 15px;
-    padding: 10px;
-    background-color: lightsteelblue;
-    border-radius: 20px;
+.header {
+    background-color: black !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 1;
 }
 
-.btn {
+.footer {
+    background-color: black !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.big-footer {
+    background-color: black !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    height: 28%;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+}
+
+.footer-icons {
+    margin-left: 43%;
+}
+
+.orange {
+    color: #FF7A00 !important;
+}
+
+.white {
+    color: white !important;
+}
+
+.black {
+    color: black !important;
+}
+
+.form-control:focus {
+    outline: none !important;
+}
+
+.btn-primary {
+    background-color: #FF7A00;
+    border: #FF7A00 1px solid;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    border: white 1px solid;
+}
+
+.btn-primary:active {
+    background-color: transparent !important;
+    border: white 1px solid !important;
+}
+
+.active-button {
+    background-color: transparent !important;
+    border: white 1px solid !important;
+}
+
+.subtitle {
+    color: white;
+}
+
+/* ======================== HOME ======================== */
+
+.home-title {
+    margin-top: 7%;
+    color: white;
+    text-align: center;
+}
+
+.home-subtitle {
+    color: white;
+    text-align: center;
+}
+
+.search-form {
+    margin-top: 2%;
+    margin-left: 25%;
+    width: 50%;
+    height: 50px;
+    border-radius: 100px;
+}
+
+.index-search-form {
+    margin-top: 8%;
+    margin-left: 15%;
+    width: 65%;
+    height: 50px;
+    border-radius: 100px;
+}
+
+.login-input {
+    margin-bottom: 2%;
+    width: 80% !important;
+    border-radius: 10px;
+}
+
+.home-action-button {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.auction-card {
+    display: inline-block;
+    width: 22%;
+    height: 40%;
+    border: none;
+    padding: 0;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.card-title-link {
+    text-decoration: none;
+    color: black;
+}
+
+.card-title-link:hover {
+    color: #FF7A00;
+    font-weight: bold;
+}
+
+.home-auctions {
+    margin-top: 5%;
+    margin-left: auto;
+}
+
+.login-form {
+    margin-top: 8%;
+}
+
+.profile-link {
+    color: white;
+    margin-right: 30px;
+}
+
+.details-row {
+    height: 40%;
+    margin-top: 8%;
+}
+
+.details-img {
+    border-radius: 30px;
+}
+
+.details {
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px;
+}
+
+.bid-input {
+    display: inline-block;
+    width: 65%;
+}
+
+.bid-button {
+    display: inline-block;
+    width: 20%;
+    margin-left: 2%;
+}
+
+.watchlist-icon {
+    margin-top: 15px;
+}
+
+.bid-button:hover {
+    background-color: #FF7A00;
+    border: #FF7A00 1px solid;
+}
+
+.bid-info {
+    margin-top: 35%;
+}
+
+.details-title {
+    display: inline-block;
+}
+
+.icon {
+    font-size: 30px;
+    color: black;
+    margin-left: 2%;
+    font-family: Verdana, serif;
+}
+
+.icon:hover {
+    color: #FF7A00;
+}
+
+.subscribe-footer {
+    display: block;
+    margin-left: 35%;
+    margin-top: 3%;
+}
+
+.subscribe-input {
+    display: block;
+    width: 450px;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+
+.sub-button {
+    margin-left: 15%;
+    background-color: transparent;
+    border: 1px solid white;
+    width: 150px;
+}
+
+.sub-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+}
+
+.home-button {
+    width: 13%;
+    margin-bottom: 10px;
+}
+
+.profile-separator {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+
+.submit-form-button {
     width: 200px;
-    padding: 5px;
-    margin: 2px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
-.inputAuc{
-    width: 300px;
-    padding: 3px;
+.lap-top-img {
+    height: 480px;
+    width: 480px;
+    margin-left: 12%;
+}
+
+.form-row {
+    height: 30%;
+}
+
+.home-row {
+    margin-left: 3%;
+}
+
+.comment-input-row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.comment-input {
+    display: inline-block;
+    width: 80%;
+}
+
+.comment-button {
+    display: inline-block;
+    width: 17%;
+    margin-left: 2%;
+}
+
+.details-container{
+    margin-bottom: 100px;
+}
+
+.comment{
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
 }
